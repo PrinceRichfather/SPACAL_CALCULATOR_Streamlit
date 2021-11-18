@@ -49,9 +49,9 @@ if st.sidebar.button('Run Calculations'):
 
         st.write("## `Moliere Radii [gr/cm^2]`")
         # st.write("#### RM ")
-        st.text(f'Capillar RM: {capillar_RM_gr[0]:.0f} {capillar_RM_gr[1]}')
-        st.text(f'Absorber RM: {absorber_RM_gr[0]:.0f} {absorber_RM_gr[1]}')
-        st.text(f'Module RM: {module_RM_gr[0]:.0f} {module_RM_gr[1]}')
+        st.text(f'Capillar RM: {capillar_RM_gr[0]:.4f} {capillar_RM_gr[1]}')
+        st.text(f'Absorber RM: {absorber_RM_gr[0]:.4f} {absorber_RM_gr[1]}')
+        st.text(f'Module RM: {module_RM_gr[0]:.4f} {module_RM_gr[1]}')
 
 
 
@@ -64,9 +64,9 @@ if st.sidebar.button('Run Calculations'):
 
         st.write("## `Moliere Radii  [cm]`")
         # st.write("#### RM")
-        st.text(f'Capillar RM: {capillar_RM_cm[0]:.0f} {capillar_RM_cm[1]}')
-        st.text(f'Absorber RM: {absorber_RM_cm[0]:.0f} {absorber_RM_cm[1]}')
-        st.text(f'Module RM: {module_RM_cm[0]:.0f} {module_RM_cm[1]}')
+        st.text(f'Capillar RM: {capillar_RM_cm[0]:.4f} {capillar_RM_cm[1]}')
+        st.text(f'Absorber RM: {absorber_RM_cm[0]:.4f} {absorber_RM_cm[1]}')
+        st.text(f'Module RM: {module_RM_cm[0]:.4f} {module_RM_cm[1]}')
 
 
     
@@ -76,9 +76,9 @@ if st.sidebar.button('Run Calculations'):
         module_RL_gr = data["Module Rad Length [gr/cm^2]"]
 
         st.write("## `Radiation Lengths [gr/cm^2]`")
-        st.text(f'Capillar RM: {capillar_RL_gr[0]:.0f} {capillar_RL_gr[1]}')
-        st.text(f'Absorber RM: {absorber_RL_gr[0]:.0f} {absorber_RL_gr[1]}')
-        st.text(f'Module RM: {module_RL_gr[0]:.0f} {module_RL_gr[1]}')
+        st.text(f'Capillar RM: {capillar_RL_gr[0]:.4f} {capillar_RL_gr[1]}')
+        st.text(f'Absorber RM: {absorber_RL_gr[0]:.4f} {absorber_RL_gr[1]}')
+        st.text(f'Module RM: {module_RL_gr[0]:.4f} {module_RL_gr[1]}')
 
 
     if rad_len_cm:
@@ -87,9 +87,9 @@ if st.sidebar.button('Run Calculations'):
         module_RL_cm = data["Module Rad Length [cm]"]
 
         st.write("## `Radiation Lengths [cm]`")
-        st.text(f'Capillar RM: {capillar_RL_cm[0]:.0f} {capillar_RL_cm[1]}')
-        st.text(f'Absorber RM: {absorber_RL_cm[0]:.0f} {absorber_RL_cm[1]}')
-        st.text(f'Module RM: {module_RL_cm[0]:.0f} {module_RL_cm[1]}')
+        st.text(f'Capillar RM: {capillar_RL_cm[0]:.4f} {capillar_RL_cm[1]}')
+        st.text(f'Absorber RM: {absorber_RL_cm[0]:.4f} {absorber_RL_cm[1]}')
+        st.text(f'Module RM: {module_RL_cm[0]:.4f} {module_RL_cm[1]}')
 
     if all_df:    
         st.dataframe(data.T)
