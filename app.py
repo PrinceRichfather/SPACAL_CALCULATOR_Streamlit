@@ -9,36 +9,11 @@ st.write("""
 
 
 """)
-# st.radio('Pick one', ['cats', 'dogs'])
 
-# st.sidebar.write("""
-
-# ## Input Parameters
-# """)
 wall = st.sidebar.slider("""Wall of Absorber [mm]""", 0.01, 1.00)
 capillar_width = st.sidebar.slider('Capillar Tube Width [mm]', 0.00, 1.00)
 air_radius = st.sidebar.slider('Air Tube Half Width [mm]', 0.00, 0.50)
 fiber_diameter = st.sidebar.slider('Fiber diameter [mm]', 0.1, 4.0)
-
-
-
-
-
-
-
-# st.radio('Pick one', ['cats', 'dogs'])
-
-
-
-
-# st.select_slider('Pick a size', np.arange(0, 10, 0.1))
-# res = st.multiselect('Buy', ['milk', 'apples', 'potatoes'])
-# if res == "milk":
-#     st.text("Milk is chosen")
-# wall = st.number_input('Wall of Absorber, between fibers', 0, 10)
-# capillar_width = st.number_input('Capillar Tube Width', 0, 10)
-# air_radius = st.number_input('Air Tube radius', 0, 10)
-# fiber_diameter = st.number_input('Fiber diameter', 0, 10)
 
 
 
@@ -54,7 +29,6 @@ all_df = st.sidebar.checkbox('Show the Table')
 if st.sidebar.button('Run Calculations'):
 
     data = main.SummaryFunction(
-                                print_results       =False,
                                 dataframe           =True, 
                                 wall                =wall,  # mm   
                                 capillar_width      =capillar_width,  # mm
