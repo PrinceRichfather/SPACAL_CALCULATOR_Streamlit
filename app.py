@@ -2,6 +2,7 @@ import streamlit as st
 import main
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 st.write("""
 # SPACAL Module parameters Calculator
@@ -36,7 +37,7 @@ if st.sidebar.button('Run Calculations'):
                                 )
 
     if absorb:
-        # st.write(['st', 'is <', 3])
+
         st.write("## `Absorber Dimentions`")
         st.text(f'X: {data["X"][0]:.0f} {data["X"][1]}')
         st.text(f'Y: {data["Y"][0]:.0f} {data["Y"][1]}')
@@ -76,9 +77,9 @@ if st.sidebar.button('Run Calculations'):
         module_RL_gr = data["Module Rad Length [gr/cm^2]"]
 
         st.write("## `Radiation Lengths [gr/cm^2]`")
-        st.text(f'Capillar RM: {capillar_RL_gr[0]:.4f} {capillar_RL_gr[1]}')
-        st.text(f'Absorber RM: {absorber_RL_gr[0]:.4f} {absorber_RL_gr[1]}')
-        st.text(f'Module RM: {module_RL_gr[0]:.4f} {module_RL_gr[1]}')
+        st.text(f'Capillar RL: {capillar_RL_gr[0]:.4f} {capillar_RL_gr[1]}')
+        st.text(f'Absorber RL: {absorber_RL_gr[0]:.4f} {absorber_RL_gr[1]}')
+        st.text(f'Module RL: {module_RL_gr[0]:.4f} {module_RL_gr[1]}')
 
 
     if rad_len_cm:
@@ -87,12 +88,82 @@ if st.sidebar.button('Run Calculations'):
         module_RL_cm = data["Module Rad Length [cm]"]
 
         st.write("## `Radiation Lengths [cm]`")
-        st.text(f'Capillar RM: {capillar_RL_cm[0]:.4f} {capillar_RL_cm[1]}')
-        st.text(f'Absorber RM: {absorber_RL_cm[0]:.4f} {absorber_RL_cm[1]}')
-        st.text(f'Module RM: {module_RL_cm[0]:.4f} {module_RL_cm[1]}')
+        st.text(f'Capillar RL: {capillar_RL_cm[0]:.4f} {capillar_RL_cm[1]}')
+        st.text(f'Absorber RL: {absorber_RL_cm[0]:.4f} {absorber_RL_cm[1]}')
+        st.text(f'Module RL: {module_RL_cm[0]:.4f} {module_RL_cm[1]}')
 
     if all_df:    
         st.dataframe(data.T)
+
+draw_2d = st.sidebar.button('Draw 2D Image')
+
+
+if draw_2d:
+
+    draw_data = main.SummaryFunction(
+                                    dataframe           =True, 
+                                    wall                =wall,  # mm   
+                                    capillar_width      =capillar_width,  # mm
+                                    air_width           =air_width,   # mm 
+                                    fiber_diameter      =fiber_diameter,   # mm 
+                                    )
+    
+    
+    fiber_diameter = fiber_diameter
+    # air_width = air_radius * 2
+    capillar_width = capillar_width
+
+    hole_diameter = fiber_diameter + air_width + capillar_width
+
+    wall = wall
+
+    fiber_radius = fiber_diameter/2
+    air_radius = fiber_radius + air_width/2
+    capillar_radius = air_radius + capillar_width/2
+
+    num_fibers = int(draw_data["Fibers per Axis"][0])
+    pitch = hole_diameter + wall
+
+
+    plt.figure(figsize=(10, 10), dpi=500)
+    rectangle = plt.Rectangle((0, 0), 121, 121, fc='blue', alpha=0.5)
+
+    plt.gca().add_patch(rectangle)
+
+    zero_coor = (wall/2) + (hole_diameter/2)
+
+    move_pitch = (draw_data["X"][0])/num_fibers
+
+    f"Number of Fibers per Axis: {num_fibers}"
+    f"Number of Fibers per Module: {num_fibers**2}"
+    x_coor = zero_coor
+    y_coor = zero_coor
+
+    for x in range(num_fibers):
+        
+            for y in range(num_fibers):
+
+                capillar_tube = plt.Circle((x_coor, y_coor), radius = capillar_radius, fc='black')
+
+                air_tube = plt.Circle((x_coor, y_coor), radius = air_radius, fc='blue', alpha=0.5)
+
+                circle = plt.Circle((x_coor, y_coor), radius=fiber_radius, fc='green')
+
+                plt.gca().add_patch(capillar_tube)
+                plt.gca().add_patch(air_tube)
+                plt.gca().add_patch(circle)
+
+                x_coor += move_pitch
+                
+                if y == num_fibers-1:
+                    
+                    x_coor = zero_coor
+            
+                    y_coor += move_pitch
+        
+
+    plt.axis('scaled')
+    st.pyplot(plt)
 
 
 

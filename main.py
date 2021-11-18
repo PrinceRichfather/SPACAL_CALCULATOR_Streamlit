@@ -65,12 +65,12 @@ def SummaryFunction(
     
     
     # Absorber Parameters
-    #                    lead   antimony  tin
-    #                      Pb      Sb     Sn
-    densities =         [11.34,  6.697, 5.75]       # g/cm^3
-    mass_fraction =     [0.84,   0.12,  0.04]       # sum = 1
-    rad_lengths =       [6.37,   8.73,  8.82]       # g/cm^2
-    moliere_radii =     [18.18, 15.81, 15.77]       # g/cm^2
+    #                    lead 
+    #                      Pb 
+    densities =         [11.34]       # g/cm^3
+    mass_fraction =     [1]       # sum = 1
+    rad_lengths =       [6.37]       # g/cm^2
+    moliere_radii =     [18.18]       # g/cm^2
 
 
     capillar_dict = {
