@@ -11,7 +11,7 @@ st.write("""
 
 wall = st.sidebar.slider("""Wall of Absorber [mm]""", 0.01, 1.00)
 capillar_width = st.sidebar.slider('Capillar Tube Width [mm]', 0.00, 1.00)
-air_radius = st.sidebar.slider('Air Tube Half Width [mm]', 0.00, 0.50)
+air_width = st.sidebar.slider('Air Tube Width [mm]', 0.00, 0.50)
 fiber_diameter = st.sidebar.slider('Fiber diameter [mm]', 0.1, 4.0)
 
 
@@ -31,7 +31,7 @@ if st.sidebar.button('Run Calculations'):
                                 dataframe           =True, 
                                 wall                =wall,  # mm   
                                 capillar_width      =capillar_width,  # mm
-                                air_radius          =air_radius,   # mm 
+                                air_width           =air_width,   # mm 
                                 fiber_diameter      =fiber_diameter,   # mm 
                                 )
 

@@ -12,7 +12,7 @@ def SummaryFunction(
                     dataframe           =False,
                     wall                =0.55,
                     capillar_width      =0.05,  # mm
-                    air_radius          =0.1, 
+                    air_width           =0.1, 
                     fiber_diameter      =2, 
                     Z                   =1,     # Unit length
                     ):
@@ -88,6 +88,7 @@ def SummaryFunction(
     Rm_fib = 9.97
     Rm_air = 8.83
 
+    air_radius = air_width/2
 
     # Armour inner diam
     capillar_d = fiber_diameter + (air_radius * 2)
