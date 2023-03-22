@@ -24,27 +24,35 @@ def SummaryFunction(
     ##################
 
     def hollow_cylinder_volume(D, d, h):
+        '''D = outer diameter, d = inner diameter, h = height'''
         return np.pi * h * (D**2 - d**2)/4
 
     def cylinder_volume(R, h):
+        '''R = radius, h = height'''
         return np.pi * h * R**2
 
     def circle_area(R):
+        '''R = radius'''
         return np.pi * R**2
 
     def hollow_circle_area(R, r):
+        '''R = outer radius, r = inner radius'''
         return np.pi * R**2 - np.pi * r**2
 
     def compound_moliere_radius_gr(mass_fractions, moliere_radii):
+        '''Returns the compound moliere radius in g/cm^2'''
         return 1 / np.sum(np.array(mass_fractions) / np.array(moliere_radii))
 
     def moliere_radius_cm(moliere_radius, density):
+        '''Returns the moliere radius in cm'''
         return moliere_radius / density
 
     def compound_radiation_length_gr(mass_fractions, radiation_lengths):
+        '''Returns the compound radiation length in g/cm^2'''
         return 1 / np.sum(np.array(mass_fractions) / np.array(radiation_lengths))
 
     def radiation_length_cm(radiation_length, density):
+        '''Returns the radiation length in cm'''
         return radiation_length / density
 
 ############################ II   ATTRIBUTES SECTION #####################################################################################
