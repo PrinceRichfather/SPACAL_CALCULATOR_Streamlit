@@ -1,1 +1,1 @@
-SPACAL_CALCULATOR_Streamlit
+It is a little Streamlit programm for calculating some physical properties of a SPACAL module, used in ECAL at LHCb expecient at CERN
